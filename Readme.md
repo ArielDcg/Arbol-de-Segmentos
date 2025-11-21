@@ -212,129 +212,96 @@ Var = E[X²] - (E[X])²
 
 ```
 Arbol-de-Segmentos/
-├── segment_tree_variance.py    # Implementación principal del árbol
-├── ejemplos.py                 # Ejemplos de uso avanzados
-├── visualize_tree.py           # Script para generar visualizaciones
-├── segment_tree_variance.ipynb # Notebook: Implementación interactiva
-├── ejemplos.ipynb              # Notebook: Ejemplos del mundo real
-├── visualizacion.ipynb         # Notebook: Visualización interactiva
+├── arbol_segmentos.py          # ⭐ Implementación completa en Python
+├── arbol_segmentos.ipynb       # ⭐ Notebook Jupyter interactivo
 ├── tree_example_small.png      # Visualización de ejemplo (array pequeño)
 ├── tree_example_medium.png     # Visualización de ejemplo (array mediano)
 ├── .gitignore                  # Archivos a ignorar por git
-└── Readme.md                   # Este archivo
+└── Readme.md                   # Este archivo (documentación)
 ```
 
-### Archivos Python (.py) vs Notebooks (.ipynb)
+### Los Dos Archivos Principales
 
-- **Archivos .py**: Scripts ejecutables desde la línea de comandos
-- **Notebooks .ipynb**: Versión interactiva para Jupyter, ideal para:
-  - Aprendizaje paso a paso
-  - Experimentación con diferentes valores
-  - Visualización inmediata de resultados
-  - Documentación integrada con código
+**🐍 arbol_segmentos.py** - Script Python completo que incluye:
+- Clases Node y SegmentTreeVariance
+- Función visualizar_arbol() para gráficos
+- 5 ejemplos prácticos (sensores, calificaciones, finanzas, etc.)
+- Ejecutable desde línea de comandos
+
+**📓 arbol_segmentos.ipynb** - Notebook Jupyter interactivo que incluye:
+- Todo el contenido del .py organizado en celdas
+- Visualizaciones integradas
+- Secciones para experimentar con tus propios datos
+- Ideal para aprendizaje paso a paso
 
 ## Uso del Programa
 
-### Instalación y Ejecución
-
-No se requieren dependencias externas. Solo Python 3.6+.
+### Opción 1: Ejecutar el Script Python
 
 ```bash
-# Ejecutar el programa principal con ejemplos básicos
-python3 segment_tree_variance.py
+# Ejecutar todos los ejemplos
+python3 arbol_segmentos.py
 
-# Ejecutar ejemplos avanzados
-python3 ejemplos.py
-
-# Generar visualizaciones del árbol (requiere matplotlib)
-pip3 install matplotlib
-python3 visualize_tree.py
+# Usar como módulo en tu código
+python3
+>>> from arbol_segmentos import SegmentTreeVariance, visualizar_arbol
+>>> st = SegmentTreeVariance([4, 8, 6, 2])
+>>> st.query_variance(0, 3)
+5.0
+>>> visualizar_arbol([4, 8, 6, 2])  # Genera imagen PNG
 ```
 
-### Uso con Jupyter Notebooks
+**Nota**: Para visualización gráfica necesitas matplotlib: `pip3 install matplotlib`
 
-Para una experiencia interactiva, abre los notebooks:
+### Opción 2: Usar el Notebook Jupyter (Recomendado para Aprender)
 
 ```bash
-# Instalar Jupyter (si no lo tienes)
+# Instalar Jupyter y matplotlib
 pip3 install jupyter matplotlib
 
 # Abrir Jupyter
 jupyter notebook
 
-# Luego abre cualquiera de estos notebooks:
-# - segment_tree_variance.ipynb: Implementación completa con ejemplos
-# - ejemplos.ipynb: Casos de uso del mundo real
-# - visualizacion.ipynb: Visualización gráfica interactiva
+# Abrir: arbol_segmentos.ipynb
 ```
 
-Los notebooks te permiten:
-- Ejecutar código celda por celda
-- Modificar valores y ver resultados inmediatamente
-- Experimentar con diferentes arrays y consultas
-- Ver visualizaciones integradas en el documento
+**Ventajas del notebook:**
+- ✓ Ejecutar código celda por celda
+- ✓ Modificar valores y ver resultados inmediatamente
+- ✓ Visualizaciones integradas
+- ✓ Experimentar con tus propios datos
+- ✓ Documentación interactiva
 
-### Ejemplo de Uso Básico
+### Ejemplos Incluidos en el Código
+
+El archivo contiene 5 ejemplos completos:
+
+1. **Consultas básicas**: Array simple con diferentes rangos
+2. **Sensores de temperatura**: Análisis por períodos del día
+3. **Calificaciones**: Análisis de grupos de estudiantes
+4. **Volatilidad financiera**: Análisis semanal de precios
+5. **Actualizaciones dinámicas**: Efecto de cambios en la varianza
+
+### Código de Ejemplo
 
 ```python
-from segment_tree_variance import SegmentTreeVariance
+from arbol_segmentos import SegmentTreeVariance, visualizar_arbol
 
-# Crear el árbol con un array
+# Crear árbol
 arr = [4, 8, 6, 2, 10, 12, 14, 16]
 st = SegmentTreeVariance(arr)
 
 # Consultar varianza de un rango
-varianza = st.query_variance(0, 3)  # Varianza de [4, 8, 6, 2]
-print(f"Varianza: {varianza}")      # Output: 5.0
+print(st.query_variance(0, 3))     # 5.0
+print(st.query_mean(0, 3))         # 5.0
 
-# Consultar media
-media = st.query_mean(0, 3)
-print(f"Media: {media}")            # Output: 5.0
+# Actualizar valor
+st.update(1, 4)
+print(st.query_variance(0, 3))     # 2.0
 
-# Actualizar un valor
-st.update(1, 4)                     # Cambiar arr[1] de 8 a 4
-
-# Consultar de nuevo
-nueva_varianza = st.query_variance(0, 3)
-print(f"Nueva varianza: {nueva_varianza}")  # Output: 2.0
+# Generar visualización
+visualizar_arbol([4, 8, 6, 2], guardar='mi_arbol.png')
 ```
-
-### Ejemplo Avanzado: Análisis de Datos de Sensores
-
-```python
-# Temperaturas por hora (24 lecturas)
-temperaturas = [18, 17, 16, 15, 16, 18, 20, 22, 25, 27, 29, 30,
-                31, 32, 31, 30, 28, 26, 24, 22, 21, 20, 19, 18]
-
-st = SegmentTreeVariance(temperaturas)
-
-# Analizar variabilidad en la tarde (12h - 17h)
-var_tarde = st.query_variance(12, 17)
-media_tarde = st.query_mean(12, 17)
-
-print(f"Tarde: Media={media_tarde:.2f}°C, Varianza={var_tarde:.4f}")
-```
-
-### Visualización del Árbol
-
-El proyecto incluye un script para generar visualizaciones gráficas del árbol de segmentos:
-
-```python
-from visualize_tree import draw_segment_tree
-
-# Generar visualización para un array personalizado
-arr = [10, 20, 15, 30]
-draw_segment_tree(arr, 'mi_arbol.png')
-```
-
-Esto generará una imagen PNG mostrando:
-- El array original en la parte superior
-- La estructura jerárquica del árbol
-- Cada nodo con su intervalo, suma, suma de cuadrados y varianza
-- Nodos hoja en color rosa y nodos internos en azul claro
-- Una leyenda explicando los símbolos
-
-**Nota**: Se requiere matplotlib para generar visualizaciones. Instálalo con `pip3 install matplotlib`
 
 ## API Completa
 
