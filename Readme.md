@@ -215,11 +215,23 @@ Arbol-de-Segmentos/
 ├── segment_tree_variance.py    # Implementación principal del árbol
 ├── ejemplos.py                 # Ejemplos de uso avanzados
 ├── visualize_tree.py           # Script para generar visualizaciones
+├── segment_tree_variance.ipynb # Notebook: Implementación interactiva
+├── ejemplos.ipynb              # Notebook: Ejemplos del mundo real
+├── visualizacion.ipynb         # Notebook: Visualización interactiva
 ├── tree_example_small.png      # Visualización de ejemplo (array pequeño)
 ├── tree_example_medium.png     # Visualización de ejemplo (array mediano)
 ├── .gitignore                  # Archivos a ignorar por git
 └── Readme.md                   # Este archivo
 ```
+
+### Archivos Python (.py) vs Notebooks (.ipynb)
+
+- **Archivos .py**: Scripts ejecutables desde la línea de comandos
+- **Notebooks .ipynb**: Versión interactiva para Jupyter, ideal para:
+  - Aprendizaje paso a paso
+  - Experimentación con diferentes valores
+  - Visualización inmediata de resultados
+  - Documentación integrada con código
 
 ## Uso del Programa
 
@@ -238,6 +250,29 @@ python3 ejemplos.py
 pip3 install matplotlib
 python3 visualize_tree.py
 ```
+
+### Uso con Jupyter Notebooks
+
+Para una experiencia interactiva, abre los notebooks:
+
+```bash
+# Instalar Jupyter (si no lo tienes)
+pip3 install jupyter matplotlib
+
+# Abrir Jupyter
+jupyter notebook
+
+# Luego abre cualquiera de estos notebooks:
+# - segment_tree_variance.ipynb: Implementación completa con ejemplos
+# - ejemplos.ipynb: Casos de uso del mundo real
+# - visualizacion.ipynb: Visualización gráfica interactiva
+```
+
+Los notebooks te permiten:
+- Ejecutar código celda por celda
+- Modificar valores y ver resultados inmediatamente
+- Experimentar con diferentes arrays y consultas
+- Ver visualizaciones integradas en el documento
 
 ### Ejemplo de Uso Básico
 
