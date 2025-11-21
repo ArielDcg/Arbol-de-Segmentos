@@ -85,6 +85,12 @@ Ejemplo: Array [4, 8, 6, 2]
    suma²=16      suma²=64            suma²=36      suma²=4
 ```
 
+**Visualización gráfica del árbol:**
+
+![Visualización del Árbol de Segmentos](tree_example_small.png)
+
+*La imagen muestra cómo cada nodo almacena el intervalo que representa, la suma (Σ), la suma de cuadrados (Σ²) y la varianza calculada. Los nodos hoja (en rosa) representan elementos individuales con varianza 0, mientras que los nodos internos (en azul) representan rangos agregados.*
+
 ### 3. Operación de Construcción (`build`)
 
 **Algoritmo recursivo**:
@@ -206,9 +212,13 @@ Var = E[X²] - (E[X])²
 
 ```
 Arbol-de-Segmentos/
-├── segment_tree_variance.py  # Implementación principal
-├── ejemplos.py               # Ejemplos de uso avanzados
-└── Readme.md                 # Este archivo
+├── segment_tree_variance.py    # Implementación principal del árbol
+├── ejemplos.py                 # Ejemplos de uso avanzados
+├── visualize_tree.py           # Script para generar visualizaciones
+├── tree_example_small.png      # Visualización de ejemplo (array pequeño)
+├── tree_example_medium.png     # Visualización de ejemplo (array mediano)
+├── .gitignore                  # Archivos a ignorar por git
+└── Readme.md                   # Este archivo
 ```
 
 ## Uso del Programa
@@ -223,6 +233,10 @@ python3 segment_tree_variance.py
 
 # Ejecutar ejemplos avanzados
 python3 ejemplos.py
+
+# Generar visualizaciones del árbol (requiere matplotlib)
+pip3 install matplotlib
+python3 visualize_tree.py
 ```
 
 ### Ejemplo de Uso Básico
@@ -265,6 +279,27 @@ media_tarde = st.query_mean(12, 17)
 
 print(f"Tarde: Media={media_tarde:.2f}°C, Varianza={var_tarde:.4f}")
 ```
+
+### Visualización del Árbol
+
+El proyecto incluye un script para generar visualizaciones gráficas del árbol de segmentos:
+
+```python
+from visualize_tree import draw_segment_tree
+
+# Generar visualización para un array personalizado
+arr = [10, 20, 15, 30]
+draw_segment_tree(arr, 'mi_arbol.png')
+```
+
+Esto generará una imagen PNG mostrando:
+- El array original en la parte superior
+- La estructura jerárquica del árbol
+- Cada nodo con su intervalo, suma, suma de cuadrados y varianza
+- Nodos hoja en color rosa y nodos internos en azul claro
+- Una leyenda explicando los símbolos
+
+**Nota**: Se requiere matplotlib para generar visualizaciones. Instálalo con `pip3 install matplotlib`
 
 ## API Completa
 
