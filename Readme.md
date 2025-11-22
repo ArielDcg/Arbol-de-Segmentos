@@ -406,7 +406,7 @@ Este proyecto demuestra:
 
 ## Referencias y Recursos
 
-- **Fórmula de varianza**: [Wikipedia - Variance](https://en.wikipedia.org/wiki/Variance)
+- **Fórmula de varianza**: [Khan Academy - Statistics Alternate Variance Formulas](https://es.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/variance-standard-deviation-population/v/statistics-alternate-variance-formulas)
 - **Segment trees**: Competitive Programming 3, Steven Halim
 - **Análisis de algoritmos**: Introduction to Algorithms (CLRS)
 
