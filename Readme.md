@@ -1,5 +1,8 @@
 # Árbol de Segmentos para Varianzas de Intervalos
-
+## Integrantes
+- Ariel Cardenas
+- Silvano Vargas
+- Santiago Quevedo
 ## Descripción del Proyecto
 
 Este proyecto implementa un **Árbol de Segmentos (Segment Tree)** especializado en mantener y consultar **varianzas** de intervalos de manera eficiente. La estructura permite realizar consultas de varianza en tiempo O(log n) y actualizaciones en tiempo O(log n), lo que la hace ideal para análisis estadístico dinámico de grandes conjuntos de datos.
